@@ -23,7 +23,7 @@ def get_platform_data(data, platform_ranges):
     
     return platform_data
 
-def plot_data_with_range_selector(data, filename, platform_idx):
+def plot_data_with_range_selector(data, filename, platform_idx, prev_end_idx=None):
     fig = go.Figure()
     fig.add_trace(go.Scatter(y=data, mode='lines', name='数据'))
     
@@ -41,10 +41,12 @@ def plot_data_with_range_selector(data, filename, platform_idx):
     # 创建两列布局用于输入范围
     col1, col2 = st.columns(2)
     with col1:
-        start_idx = st.number_input("起始索引", 0, len(data)-1, 0, 
+        default_start = prev_end_idx if prev_end_idx is not None else 0
+        start_idx = st.number_input("起始索引", 0, len(data)-1, default_start, 
                                   key=f"start_{platform_idx}")
     with col2:
-        end_idx = st.number_input("结束索引", 0, len(data)-1, min(100, len(data)-1), 
+        default_end = min(default_start + 100, len(data)-1) if prev_end_idx is not None else 100
+        end_idx = st.number_input("结束索引", 0, len(data)-1, default_end, 
                                  key=f"end_{platform_idx}")
         
     return start_idx, end_idx
@@ -127,49 +129,40 @@ def main():
             
             st.header(f"处理文件: {filename}")
             
-            # 初始化或获取session state中的数据
-            if 'platform_ranges' not in st.session_state:
-                st.session_state.platform_ranges = []
-            
             platforms = [0, 5, 10, 15, 25, 0, -5, -10, -15, -25]
-            
-            # 添加"保存所有范围"按钮
-            save_all = st.button("保存所有范围")
+            platform_ranges = []
+            prev_end_idx = None
             
             for platform_idx, platform in enumerate(platforms):
                 st.subheader(f"选择平台 {platform}度 的范围")
-                start_idx, end_idx = plot_data_with_range_selector(data, filename, platform_idx)
-                
-                # 如果点击了保存所有范围，或者单独确认了这个范围
-                if (save_all or 
-                    st.button(f"确认平台{platform}度的范围", key=f"confirm_{platform_idx}")):
-                    if platform_idx >= len(st.session_state.platform_ranges):
-                        st.session_state.platform_ranges.append((start_idx, end_idx))
-                    else:
-                        st.session_state.platform_ranges[platform_idx] = (start_idx, end_idx)
-                    st.success(f"已保存平台{platform}度的范围: {start_idx} - {end_idx}")
+                start_idx, end_idx = plot_data_with_range_selector(data, filename, platform_idx, prev_end_idx)
+                platform_ranges.append((start_idx, end_idx))
+                prev_end_idx = end_idx
             
             # 添加最终保存按钮
             if st.button("保存到JSON文件"):
-                if len(st.session_state.platform_ranges) == len(platforms):
+                try:
                     result = {
                         "name": selected_subject.name,
                         "experiments": {
                             exp_num: {
-                                trial_num: get_platform_data(data, st.session_state.platform_ranges)
+                                trial_num: get_platform_data(data, platform_ranges)
                             }
                         }
                     }
                     
-                    output_file = f"{selected_subject.name}_platforms.json"
+                    # 确保result目录存在
+                    Path("result").mkdir(exist_ok=True)
+                    # 创建一个以受试者名字命名的文件夹
+                    subject_folder = Path("result") / selected_subject.name
+                    subject_folder.mkdir(exist_ok=True)
+                    # 生成文件名，包括实验编号和试验编号，防止重名
+                    output_file = subject_folder / f"{exp_num}-{trial_num}_platforms.json"
                     with open(output_file, 'w') as f:
                         json.dump(result, f, indent=4)
                     st.success(f"已保存结果到 {output_file}")
-                    
-                    # 清空已保存的范围，准备处理下一个文件
-                    st.session_state.platform_ranges = []
-                else:
-                    st.warning("请先确认所有平台的范围！")
+                except Exception as e:
+                    st.error(f"保存失败：{str(e)}")
 
 if __name__ == "__main__":
     main()

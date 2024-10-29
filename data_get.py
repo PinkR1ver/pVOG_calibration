@@ -27,7 +27,6 @@ def plot_data_with_range_selector(data, filename, platform_idx, prev_end_idx=Non
     fig = go.Figure()
     fig.add_trace(go.Scatter(y=data, mode='lines', name='数据'))
     
-    # 设置图表布局
     fig.update_layout(
         title=f"文件: {filename}",
         xaxis_title="数据点索引",
@@ -35,19 +34,28 @@ def plot_data_with_range_selector(data, filename, platform_idx, prev_end_idx=Non
         height=400
     )
     
-    # 显示图表并返回用户选择的范围
     st.plotly_chart(fig, use_container_width=True, key=f"chart_{platform_idx}")
+    
+    # 使用session_state存储范围值
+    if f"start_{platform_idx}" not in st.session_state:
+        st.session_state[f"start_{platform_idx}"] = prev_end_idx if prev_end_idx is not None else 0
+    if f"end_{platform_idx}" not in st.session_state:
+        st.session_state[f"end_{platform_idx}"] = min(st.session_state[f"start_{platform_idx}"] + 100, len(data)-1)
     
     # 创建两列布局用于输入范围
     col1, col2 = st.columns(2)
     with col1:
-        default_start = prev_end_idx if prev_end_idx is not None else 0
-        start_idx = st.number_input("起始索引", 0, len(data)-1, default_start, 
-                                  key=f"start_{platform_idx}")
+        start_idx = st.number_input("起始索引", 0, len(data)-1, 
+                                  st.session_state[f"start_{platform_idx}"], 
+                                  key=f"start_input_{platform_idx}",
+                                  on_change=lambda: setattr(st.session_state, f"start_{platform_idx}", 
+                                                         st.session_state[f"start_input_{platform_idx}"]))
     with col2:
-        default_end = min(default_start + 100, len(data)-1) if prev_end_idx is not None else 100
-        end_idx = st.number_input("结束索引", 0, len(data)-1, default_end, 
-                                 key=f"end_{platform_idx}")
+        end_idx = st.number_input("结束索引", 0, len(data)-1, 
+                                 st.session_state[f"end_{platform_idx}"], 
+                                 key=f"end_input_{platform_idx}",
+                                 on_change=lambda: setattr(st.session_state, f"end_{platform_idx}", 
+                                                        st.session_state[f"end_input_{platform_idx}"]))
         
     return start_idx, end_idx
 

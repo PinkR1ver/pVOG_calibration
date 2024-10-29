@@ -15,7 +15,7 @@ def read_plist_data(filename):
 
 def get_platform_data(data, platform_ranges):
     platform_data = {}
-    platforms = [0, 5, 10, 15, 25, 0, -5, -10, -15, -25]
+    platforms = ["0_1", 5, 10, 15, 25, "0_2", -5, -10, -15, -25]
     
     for platform, (start_idx, end_idx) in zip(platforms, platform_ranges):
         interval_data = data[start_idx:end_idx].tolist()
@@ -82,7 +82,7 @@ def process_subject_data(subject_dir):
         st.header(f"处理文件: {filename}")
         
         platform_ranges = []
-        platforms = [0, 5, 10, 15, 25, 0, -5, -10, -15, -25]
+        platforms = ["0_1", 5, 10, 15, 25, "0_2", -5, -10, -15, -25]
         
         for platform_idx, platform in enumerate(platforms):
             st.subheader(f"选择平台 {platform}度 的范围")
@@ -137,7 +137,7 @@ def main():
             
             st.header(f"处理文件: {filename}")
             
-            platforms = [0, 5, 10, 15, 25, 0, -5, -10, -15, -25]
+            platforms = ["0_1", 5, 10, 15, 25, "0_2", -5, -10, -15, -25]
             platform_ranges = []
             prev_end_idx = None
             

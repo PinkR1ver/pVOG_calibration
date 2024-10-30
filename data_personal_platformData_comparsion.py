@@ -5,6 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 from rich.progress import track
+from utils import *
 
 def plot_platform_comparison(data, user_name, platform_value, save_path):
     """
@@ -53,24 +54,6 @@ def plot_platform_comparison(data, user_name, platform_value, save_path):
     plt.savefig(os.path.join(save_path, f'platform_{platform_value}.png'),
                 bbox_inches='tight')
     plt.close()
-
-def data_offset(data):
-    '''
-    将数据整体偏移到0_1为0
-    '''
-    offset_data = json.loads(json.dumps(data))  # 深拷贝数据
-    
-    for user_name in offset_data:
-        for exp_type in offset_data[user_name]:
-            for trial_num in offset_data[user_name][exp_type]:
-                offset = offset_data[user_name][exp_type][trial_num]['0_1']['mean']
-                for platform_value in offset_data[user_name][exp_type][trial_num]:
-                    for key in ['median', 'mean', 'q1', 'q3', 'min', 'max']:
-                        offset_data[user_name][exp_type][trial_num][platform_value][key] -= offset
-                        
-                    offset_data[user_name][exp_type][trial_num][platform_value]['data'] = [x - offset for x in offset_data[user_name][exp_type][trial_num][platform_value]['data']]
-                    
-    return offset_data
 
 def plot_all_platforms_subplots(data, user_name, save_path):
     """
@@ -128,7 +111,12 @@ if __name__ == '__main__':
     base_path = os.path.dirname(__file__)
     result_path = os.path.join(base_path, "result")
     data_path = os.path.join(result_path, "statistics_result.json")
+    
     fig_path = os.path.join(base_path, "fig")
+    if not os.path.exists(fig_path):
+        os.makedirs(fig_path)
+        
+    fig_path = os.path.join(fig_path, "personal_platform_comparison")
     if not os.path.exists(fig_path):
         os.makedirs(fig_path)
     

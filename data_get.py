@@ -3,15 +3,15 @@ import plotly.graph_objects as go
 import json
 import numpy as np
 from pathlib import Path
+import plistlib
 
 def read_plist_data(filename):
-    data = []
-    with open(filename, 'r') as f:
-        for line in f:
-            if '<real>' in line:
-                value = float(line.split('>')[1].split('<')[0])
-                data.append(value)
-    return np.array(data)
+    with open(filename, 'rb') as f:
+        data = plistlib.load(f)
+        
+    data = np.array(data)
+    
+    return data
 
 def get_platform_data(data, platform_ranges):
     platform_data = {}
@@ -36,11 +36,11 @@ def plot_data_with_range_selector(data, filename, platform_idx, prev_end_idx=Non
     
     st.plotly_chart(fig, use_container_width=True, key=f"chart_{platform_idx}")
     
-    # 使用session_state存储范围值
+    # 修改session_state的初始值为0
     if f"start_{platform_idx}" not in st.session_state:
-        st.session_state[f"start_{platform_idx}"] = prev_end_idx if prev_end_idx is not None else 0
+        st.session_state[f"start_{platform_idx}"] = 0  # 始终从0开始
     if f"end_{platform_idx}" not in st.session_state:
-        st.session_state[f"end_{platform_idx}"] = min(st.session_state[f"start_{platform_idx}"] + 100, len(data)-1)
+        st.session_state[f"end_{platform_idx}"] = 0
     
     # 创建两列布局用于输入范围
     col1, col2 = st.columns(2)

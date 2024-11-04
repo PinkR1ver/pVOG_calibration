@@ -505,7 +505,7 @@ def plot_person_calibration_comparison(original_data, calibrated_data, person, s
 
 def plot_single_experiment_comparison(original_data, calibrated_data, person, exp_type, trial, save_path):
     """
-    绘制单次实验的校准对比图
+    为单个实验绘制校准前后对比图
     """
     plt.figure(figsize=(15, 10))
     
@@ -536,39 +536,37 @@ def plot_single_experiment_comparison(original_data, calibrated_data, person, ex
     
     # 绘制原始值线（红色）
     plt.plot(range(len(platform_order)), original_values,
-            '-o', color='#FF4B4B', 
-            label='Original',
-            linewidth=2, markersize=8, alpha=0.8)
+            '-o', color='red', label='Original',
+            linewidth=2, markersize=8, alpha=0.7)
     
     # 绘制校准后值线（蓝色）
     plt.plot(range(len(platform_order)), calibrated_values,
-            '-o', color='#4B7BFF', 
-            label='Calibrated',
-            linewidth=2, markersize=8, alpha=0.8)
+            '-o', color='blue', label='Calibrated',
+            linewidth=2, markersize=8, alpha=0.7)
     
     # 添加数值标签
     for i, (orig, cal) in enumerate(zip(original_values, calibrated_values)):
         plt.annotate(f'{orig:.2f}', (i, orig), textcoords="offset points",
-                    xytext=(0,10), ha='center', color='#FF4B4B', fontsize=10)
+                    xytext=(0,10), ha='center', color='red', fontsize=10)
         plt.annotate(f'{cal:.2f}', (i, cal), textcoords="offset points",
-                    xytext=(0,-20), ha='center', color='#4B7BFF', fontsize=10)
+                    xytext=(0,-20), ha='center', color='blue', fontsize=10)
     
-    plt.title(f'Platform Values Comparison for {person}\nExp{exp_type}-{trial}',
+    plt.title(f'Platform Values Comparison for {person} (Exp{exp_type}-{trial})',
              fontsize=14, fontweight='bold')
     plt.xlabel('Platform Value', fontsize=12)
     plt.ylabel('Mean Value', fontsize=12)
     plt.xticks(range(len(platform_order)), platform_order, rotation=45)
     plt.grid(True, linestyle='--', alpha=0.7)
-    plt.legend(fontsize=10)
+    plt.legend()
     plt.tight_layout()
     
     plt.savefig(os.path.join(save_path, f'{person}_exp{exp_type}_trial{trial}_comparison.png'),
                 bbox_inches='tight', dpi=300)
     plt.close()
 
-def plot_all_experiments_comparison(original_data, calibrated_data, person, save_path):
+def plot_person_average_comparison(original_data, calibrated_data, person, save_path):
     """
-    绘制所有实验的对比图
+    为单个用户绘制所有实验平均值的校准前后对比图
     """
     plt.figure(figsize=(15, 10))
     
@@ -584,46 +582,56 @@ def plot_all_experiments_comparison(original_data, calibrated_data, person, save
             [ideal_values[p] for p in platform_order],
             'k--', label='Ideal', linewidth=2)
     
-    # 为每个实验类型选择不同的颜色
-    exp_colors = plt.cm.tab20(np.linspace(0, 1, len(original_data[person])))
+    # 计算平均值
+    original_means = []
+    calibrated_means = []
     
-    for idx, exp_type in enumerate(sorted(original_data[person].keys())):
-        for trial in sorted(original_data[person][exp_type].keys()):
-            # 收集数据点
-            original_values = []
-            calibrated_values = []
-            for platform in platform_order:
+    for platform in platform_order:
+        orig_values = []
+        calib_values = []
+        
+        for exp_type in original_data[person]:
+            for trial in original_data[person][exp_type]:
                 if platform in original_data[person][exp_type][trial]:
-                    orig_value = np.mean(original_data[person][exp_type][trial][platform]['data'])
-                    calib_value = np.mean(calibrated_data[person][exp_type][trial][platform]['data'])
-                    original_values.append(orig_value)
-                    calibrated_values.append(calib_value)
-                else:
-                    original_values.append(ideal_values[platform])
-                    calibrated_values.append(ideal_values[platform])
-            
-            # 绘制原始值线
-            plt.plot(range(len(platform_order)), original_values,
-                    '-o', color=exp_colors[idx], 
-                    label=f'Original Exp{exp_type}-{trial}',
-                    linewidth=2, markersize=8, alpha=0.7)
-            
-            # 绘制校准后值线（统一使用蓝色，但透明度不同）
-            plt.plot(range(len(platform_order)), calibrated_values,
-                    '--o', color='#4B7BFF', 
-                    label=f'Calibrated Exp{exp_type}-{trial}',
-                    linewidth=2, markersize=8, alpha=0.5)
+                    orig_values.append(
+                        np.mean(original_data[person][exp_type][trial][platform]['data']))
+                    calib_values.append(
+                        np.mean(calibrated_data[person][exp_type][trial][platform]['data']))
+        
+        if orig_values:
+            original_means.append(np.mean(orig_values))
+            calibrated_means.append(np.mean(calib_values))
+        else:
+            original_means.append(ideal_values[platform])
+            calibrated_means.append(ideal_values[platform])
     
-    plt.title(f'Platform Values Comparison for {person}: All Experiments',
+    # 绘制原始平均值线（红色）
+    plt.plot(range(len(platform_order)), original_means,
+            '-o', color='red', label='Original Average',
+            linewidth=2, markersize=8, alpha=0.7)
+    
+    # 绘制校准后平均值线（蓝色）
+    plt.plot(range(len(platform_order)), calibrated_means,
+            '-o', color='blue', label='Calibrated Average',
+            linewidth=2, markersize=8, alpha=0.7)
+    
+    # 添加数值标签
+    for i, (orig, cal) in enumerate(zip(original_means, calibrated_means)):
+        plt.annotate(f'{orig:.2f}', (i, orig), textcoords="offset points",
+                    xytext=(0,10), ha='center', color='red', fontsize=10)
+        plt.annotate(f'{cal:.2f}', (i, cal), textcoords="offset points",
+                    xytext=(0,-20), ha='center', color='blue', fontsize=10)
+    
+    plt.title(f'Average Platform Values Comparison for {person}',
              fontsize=14, fontweight='bold')
     plt.xlabel('Platform Value', fontsize=12)
     plt.ylabel('Mean Value', fontsize=12)
     plt.xticks(range(len(platform_order)), platform_order, rotation=45)
     plt.grid(True, linestyle='--', alpha=0.7)
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.legend()
     plt.tight_layout()
     
-    plt.savefig(os.path.join(save_path, f'{person}_all_experiments_comparison.png'),
+    plt.savefig(os.path.join(save_path, f'{person}_average_comparison.png'),
                 bbox_inches='tight', dpi=300)
     plt.close()
 
@@ -691,14 +699,27 @@ def main():
         if not os.path.exists(person_fig_path):
             os.makedirs(person_fig_path)
         
-        # 生成每次实验的单独对比图
+        # 生成每次实验的对比图
         for exp_type in data[person]:
             for trial in data[person][exp_type]:
                 plot_single_experiment_comparison(
                     data, calibrated_data, person, exp_type, trial, person_fig_path)
         
-        # 生成所有实验的总览图
-        plot_all_experiments_comparison(data, calibrated_data, person, person_fig_path)
+        # 生成平均效果总图
+        plot_person_average_comparison(data, calibrated_data, person, person_fig_path)
+    
+    # 绘制对比图
+    plot_calibration_comparison(platform_means, calibrated_means, fig_path)
+    plot_error_comparison(detailed_errors, fig_path)
+    
+    # 添加误差分布分析
+    analyze_error_distribution(detailed_errors, fig_path)
+    analyze_error_by_platform(data, calibrated_data, fig_path)
+    
+    # 保存校准后的数据
+    calibrated_data_path = os.path.join(result_path, "calibrated_statistics_result.json")
+    with open(calibrated_data_path, 'w') as f:
+        json.dump(calibrated_data, f, indent=4)
 
 if __name__ == "__main__":
     main()

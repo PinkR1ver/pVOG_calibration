@@ -20,49 +20,55 @@ def analyze_stability(data_path):
     
     # 遍历每个用户
     for user in data:
-        user_data = data[user]['1']
-        user_trial_stats[user] = {}
-        
-        # 遍历每个试验
-        for trial in user_data:
-            for platform in user_data[trial]:
-                if '_' not in platform:
-                    platform_data = user_data[trial][platform]['data']
-                    
-                    # 为整体稳定性存储数据
-                    if platform not in platform_stats:
-                        platform_stats[platform] = {}
-                    if user not in platform_stats[platform]:
-                        platform_stats[platform][user] = []
-                    
-                    # 为个人稳定性存储数据
-                    if platform not in user_trial_stats[user]:
-                        user_trial_stats[user][platform] = []
-                    
-                    # 计算这次试验的平均值和中值
-                    mean_val = np.mean(platform_data)
-                    median_val = np.median(platform_data)
-                    
-                    platform_stats[platform][user].append((mean_val, median_val))
-                    user_trial_stats[user][platform].append((mean_val, median_val))
+        for exp_type in data[user].keys():
+            user_data = data[user][exp_type]
+            user_trial_stats[user] = {}
+            
+            # 遍历每个试验
+            for trial in user_data:
+                for platform in user_data[trial]:
+                    if '_' not in platform:
+                        platform_data = user_data[trial][platform]['data']
+                        
+                        # 为整体稳定性存储数据
+                        if platform not in platform_stats:
+                            platform_stats[platform] = {}
+                        if user not in platform_stats[platform]:
+                            platform_stats[platform][user] = []
+                        
+                        # 为个人稳定性存储数据
+                        if platform not in user_trial_stats[user]:
+                            user_trial_stats[user][platform] = []
+                        
+                        # 计算这次试验的平均值和中值
+                        mean_val = np.mean(platform_data)
+                        median_val = np.median(platform_data)
+                        
+                        platform_stats[platform][user].append((mean_val, median_val))
+                        user_trial_stats[user][platform].append((mean_val, median_val))
     
     # 1. 计算每个平台角度的整体稳定性
     platform_cv = {}
     for platform in platform_stats:
-        all_user_means = []
-        all_user_medians = []
+        user_mean_cvs = []  # 存储每个用户的平均值CV
+        user_median_cvs = []  # 存储每个用户的中值CV
         
         for user in platform_stats[platform]:
             trials = platform_stats[platform][user]
             user_means = [trial[0] for trial in trials]
             user_medians = [trial[1] for trial in trials]
             
-            all_user_means.append(np.mean(user_means))
-            all_user_medians.append(np.mean(user_medians))
+            # 计算每个用户的CV
+            user_mean_cv = calculate_cv(user_means)
+            user_median_cv = calculate_cv(user_medians)
+            
+            user_mean_cvs.append(user_mean_cv)
+            user_median_cvs.append(user_median_cv)
         
+        # 计算所有用户CV的平均值
         platform_cv[platform] = {
-            'mean_cv': calculate_cv(all_user_means),
-            'median_cv': calculate_cv(all_user_medians)
+            'mean_cv': np.mean(user_mean_cvs),
+            'median_cv': np.mean(user_median_cvs)
         }
     
     # 2. 计算每个用户在每个平台角度的稳定性
@@ -103,7 +109,7 @@ def plot_cv_comparison(cv_df):
     """绘制平台角度的整体稳定性对比图"""
     plt.figure(figsize=(10, 6))
     
-    platform_order = ["5", "10", "15", "25", "-5", "-10", "-15", "-25"]
+    platform_order = ["-25", "-15", "-10", "-5", "5", "10", "15", "25"]
     cv_df = cv_df.reindex(platform_order)
     
     x = np.arange(len(platform_order))

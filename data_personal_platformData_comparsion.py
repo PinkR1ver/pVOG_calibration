@@ -15,14 +15,12 @@ def plot_platform_comparison(data, user_name, platform_value, save_path):
     # 准备数据
     plot_data = []
     user_data = data[user_name]
-    
-    exp_type = '1'
-    
-    # 遍历所有实验和trial
-    for trial in user_data[exp_type]:
-        if platform_value in user_data[exp_type][trial]:
-            platform_data = user_data[exp_type][trial][platform_value]['data']
-            plot_data.append(platform_data)
+
+    for exp_type in user_data.keys():
+        for trial in user_data[exp_type]:
+            if platform_value in user_data[exp_type][trial]:
+                platform_data = user_data[exp_type][trial][platform_value]['data']
+                plot_data.append(platform_data)
     
     if not plot_data:  # 如果没有数据，直接返回
         return
@@ -33,6 +31,7 @@ def plot_platform_comparison(data, user_name, platform_value, save_path):
     box_plot = plt.boxplot(
         plot_data,
         labels=[f'Exp{exp_type}-{trial}' 
+                for exp_type in user_data.keys()
                 for trial in user_data[exp_type] 
                 if platform_value in user_data[exp_type][trial]],
         patch_artist=True
@@ -179,7 +178,7 @@ if __name__ == '__main__':
             plot_platform_comparison(data, user_name, platform_value, user_fig_path)
             
         # 生成包含所有平台值的大图
-        plot_all_platforms_subplots(data, user_name, user_fig_path) 
+        # plot_all_platforms_subplots(data, user_name, user_fig_path) 
     
     
     

@@ -4,6 +4,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
+from utils import *
 
 def calculate_cv(data):
     """计算变异系数 (CV = 标准差/平均值 * 100%)"""
@@ -13,6 +14,8 @@ def analyze_stability(data_path):
     # 读取数据
     with open(data_path, 'r') as f:
         data = json.load(f)
+        
+    data = data_offset(data)
     
     # 存储每个用户在每个平台角度下的平均值和中值
     platform_stats = {}  # 平台角度 -> 用户 -> (平均值, 中值)
@@ -21,8 +24,14 @@ def analyze_stability(data_path):
     # 遍历每个用户
     for user in data:
         for exp_type in data[user].keys():
+            
+            if user == 'wdy' and exp_type == '1':
+                continue
+            
             user_data = data[user][exp_type]
-            user_trial_stats[user] = {}
+            
+            if user_trial_stats.get(user) is None:
+                user_trial_stats[user] = {}
             
             # 遍历每个试验
             for trial in user_data:
@@ -96,9 +105,19 @@ def analyze_stability(data_path):
         }
         for user, platforms in user_cv.items()
     }
-    user_cv_df = pd.DataFrame(user_cv_data).round(2)
+    user_cv_mean_df = pd.DataFrame(user_cv_data).round(2)
     
-    return platform_cv_df, user_cv_df
+    user_cv_data = {
+        user: {
+            platform: data['median_cv'] 
+            for platform, data in platforms.items()
+        }
+        for user, platforms in user_cv.items()
+    }
+    
+    user_cv_median_df = pd.DataFrame(user_cv_data).round(2)
+    
+    return platform_cv_df, user_cv_mean_df, user_cv_median_df
 
 def ensure_dir(directory):
     """确保目录存在，如果不存在则创建"""
@@ -118,7 +137,7 @@ def plot_cv_comparison(cv_df):
     plt.bar(x - width/2, cv_df['mean_cv'], width, label='Mean CV')
     plt.bar(x + width/2, cv_df['median_cv'], width, label='Median CV')
     
-    plt.xlabel('Platform Angles')
+    plt.xlabel('Target Angles')
     plt.ylabel('CV (%)')
     plt.title('Overall Stability Comparison: Mean vs Median')
     plt.xticks(x, platform_order)
@@ -129,7 +148,7 @@ def plot_cv_comparison(cv_df):
     plt.savefig('fig/stable/platform_cv_comparison.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-def plot_user_cv_heatmap(user_cv_df):
+def plot_user_cv_heatmap(user_cv_df, output_name):
     """绘制用户在各平台角度的稳定性热图"""
     plt.figure(figsize=(12, 8))
     
@@ -147,35 +166,39 @@ def plot_user_cv_heatmap(user_cv_df):
                 cbar_kws={'label': 'CV (%)'})
     
     plt.title('Individual Stability Analysis (CV %)')
-    plt.xlabel('Platform Angles')
+    plt.xlabel('Target Angles')
     plt.ylabel('Users')
     
     plt.tight_layout()
     ensure_dir('fig/stable')
-    plt.savefig('fig/stable/user_cv_heatmap.png', dpi=300, bbox_inches='tight')
+    plt.savefig(os.path.join('fig/stable', f'{output_name}.png'), dpi=300, bbox_inches='tight')
     plt.close()
 
 def main():
     data_path = "result/statistics_result.json"
     
     # 分析稳定性
-    platform_cv_df, user_cv_df = analyze_stability(data_path)
+    platform_cv_df, user_cv_mean_df, user_cv_median_df = analyze_stability(data_path)
     
     # 打印结果
     print("\n平台角度整体稳定性分析 (CV %):")
     print(platform_cv_df)
-    print("\n个人稳定性分析 (CV %):")
-    print(user_cv_df)
+    print("\n个人稳定性分析 (平均值CV %):")
+    print(user_cv_mean_df)
+    print("\n个人稳定性分析 (中值CV %):")
+    print(user_cv_median_df)
     
     # 绘制对比图
     plot_cv_comparison(platform_cv_df)
-    plot_user_cv_heatmap(user_cv_df)
+    plot_user_cv_heatmap(user_cv_mean_df, 'User_Stability_Mean')
+    plot_user_cv_heatmap(user_cv_median_df, 'User_Stability_Median')
     
     # 保存结果到Excel
     ensure_dir('fig/stable')
     with pd.ExcelWriter('fig/stable/stability_analysis.xlsx') as writer:
         platform_cv_df.to_excel(writer, sheet_name='Platform_Stability')
-        user_cv_df.to_excel(writer, sheet_name='User_Stability')
+        user_cv_mean_df.to_excel(writer, sheet_name='User_Stability_Mean')
+        user_cv_median_df.to_excel(writer, sheet_name='User_Stability_Median')
 
 if __name__ == "__main__":
     main()

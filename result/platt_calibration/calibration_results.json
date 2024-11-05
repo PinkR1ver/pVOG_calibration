@@ -1,0 +1,2330 @@
+{
+    "ds": {
+        "5": {
+            "original": [
+                0.23752492911832962,
+                -0.3088166128552718
+            ],
+            "calibrated": [
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.035645841868471,
+                "original_std_error": 0.27317077098680054,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.0430498029316295,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                2.990684251701334,
+                1.0938861011230925
+            ],
+            "calibrated": [
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 7.957714823587787,
+                "original_std_error": 0.94839907528912,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.014030572661802,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                7.543159556002558,
+                5.361883090500954
+            ],
+            "calibrated": [
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.547478676748245,
+                "original_std_error": 1.0906382327508024,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.616779182745935,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                17.31375700426962,
+                15.762289305151995
+            ],
+            "calibrated": [
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.461976845289193,
+                "original_std_error": 0.7757338495588115,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.497459334151696,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -3.7967436903169567,
+                -4.60476371162343
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 0.7992462990298068,
+                "original_std_error": 0.4040100106532365,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 0.8955549872681585,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -7.345997921353427,
+                -7.820437059435168
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.4167825096057025,
+                "original_std_error": 0.2372195690408705,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.4283967597309903,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -10.710681537413969,
+                -10.66089341203772
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 4.314212525274156,
+                "original_std_error": 0.024894062688124663,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 4.31428434709507,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -18.156844333273774,
+                -17.84409771917473
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 6.999528973775748,
+                "original_std_error": 0.15637330704952213,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 7.0012754885009185,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "dx": {
+        "5": {
+            "original": [
+                -1.6048330636762373,
+                -0.16110504901901435
+            ],
+            "calibrated": [
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.882969056347626,
+                "original_std_error": 0.7218640073286111,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.92709140835707,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                0.9565732505170422,
+                2.3251290400148905
+            ],
+            "calibrated": [
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.359148854734034,
+                "original_std_error": 0.6842778947489241,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.387109502852775,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                4.010882948082125,
+                7.090838589269282
+            ],
+            "calibrated": [
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.449139231324295,
+                "original_std_error": 1.5399778205935784,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.573806134493848,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                13.147404835873692,
+                15.899399411639294
+            ],
+            "calibrated": [
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 10.476597876243506,
+                "original_std_error": 1.375997287882801,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 10.566573313840717,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -7.245479714061433,
+                -4.051516825235226
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.5969814444131032,
+                "original_std_error": 0.6484982696483295,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 1.7236298151101468,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -10.000770147735034,
+                -6.991714237852575
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.5045279549412296,
+                "original_std_error": 1.5037578072061955,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.127179331869606,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -12.90664640840969,
+                -10.669674755489815
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.211839418050247,
+                "original_std_error": 1.1184858264599375,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.4010179345797513,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -19.910277244410366,
+                -19.827615217770948
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.131053768909343,
+                "original_std_error": 0.04133101331970934,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.131220228376561,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "dyl": {
+        "5": {
+            "original": [
+                2.373618537956538,
+                2.979745578877539,
+                2.6427904790651655
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.334615134700252,
+                "original_std_error": 0.24796555829509917,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.347746737889775,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                4.4511149120036295,
+                4.918377210640589,
+                4.346538942390343
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.42798964498848,
+                "original_std_error": 0.24861152073588713,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.433680085756317,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                6.731037274567014,
+                7.696278385272889,
+                6.25923215102764
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.104484063044152,
+                "original_std_error": 0.5980888410180814,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.12652276129754,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                14.476066035516874,
+                15.071461530043878,
+                13.514165435876407
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 10.64610233285428,
+                "original_std_error": 0.6416055973883893,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 10.665418539570092,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -2.737943451581325,
+                -2.556214316065607,
+                -3.783032305965561
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.9742699754625026,
+                "original_std_error": 0.5406085637291458,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.0469488403939167,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -5.663486111235906,
+                -5.340169506284991,
+                -6.487044578454374
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 4.169766601341576,
+                "original_std_error": 0.48282785143910784,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 4.197627454144661,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -8.613086462480606,
+                -9.312984010052846,
+                -9.658857313970335
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.805024071165405,
+                "original_std_error": 0.4350123361323587,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.821300559101643,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -14.825764791288364,
+                -14.9510460905785,
+                -16.51455283213069
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.569545428667482,
+                "original_std_error": 0.768277567153596,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.600335938472265,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "jyh": {
+        "5": {
+            "original": [
+                4.327562256562973,
+                4.529245705695958,
+                3.8583255118713984
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 0.7616221752898902,
+                "original_std_error": 0.28106805081579406,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 0.811829777159408,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                8.628308017837353,
+                8.530095247947589,
+                8.599866741955978
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.4139099974196931,
+                "original_std_error": 0.04126165252163191,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 1.4145119316471575,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                11.418385173894709,
+                11.506216763119632,
+                12.487531222797308
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.195955613396117,
+                "original_std_error": 0.48462651492581893,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.2324905478233488,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                16.114211065368004,
+                16.540118627842045,
+                17.457446734386707
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.296074524134415,
+                "original_std_error": 0.5604730313021828,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.314985419638997,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -2.7377025131755626,
+                -2.253975440535381,
+                -2.535582861583479
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.4909130615685258,
+                "original_std_error": 0.19836749676466245,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.498799220438762,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -6.815063183949169,
+                -6.3975893205330605,
+                -6.909730740655885
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.2925389182872955,
+                "original_std_error": 0.22249474578910197,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.3000479451578015,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -11.536046340983232,
+                -11.64605541666601,
+                -11.873944965241233
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.3146510923698416,
+                "original_std_error": 0.1407168644073969,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.3176366739106973,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -18.102866048941067,
+                -19.024507342328913,
+                -19.62240487279933
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 6.08340724531023,
+                "original_std_error": 0.6250246544321979,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 6.11543126287436,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "km": {
+        "5": {
+            "original": [
+                2.9061303537392993,
+                1.2946330338506844,
+                0.8584734407966538
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.313587723871121,
+                "original_std_error": 0.8806599568091,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.4286186086114046,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                4.975352092398094,
+                4.864527447353141,
+                5.094657850441852
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.021820869935638,
+                "original_std_error": 0.09397160816941112,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.022700022185584,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                7.850161288942901,
+                8.816034154823294,
+                9.366069226565761
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 6.322578443222682,
+                "original_std_error": 0.6265802997699975,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 6.3535502707355676,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                13.64359009915496,
+                16.262410033298615,
+                17.24196912753454
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.28401024667063,
+                "original_std_error": 1.5189940201202772,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.407453911311306,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -0.03130288052794713,
+                -3.4301623344290766,
+                -2.557387912528787
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.9937156241713967,
+                "original_std_error": 1.441260496455761,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.3225840933002493,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -2.266849292122072,
+                -7.054960369299098,
+                -5.331605268188508
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.115528356796774,
+                "original_std_error": 1.9801428030642463,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.4853984257954345,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -5.650356099905434,
+                -12.071480018905458,
+                -8.587160049637824
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 6.230334610517095,
+                "original_std_error": 2.6245874907741893,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 6.760586428390333,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -11.359168836846026,
+                -15.851239154028015,
+                -14.785918871033386
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 11.00122437936419,
+                "original_std_error": 1.9164845953136387,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 11.166908750822293,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "lry": {
+        "5": {
+            "original": [
+                3.4471167959763482,
+                1.368183547268459,
+                1.974338715196732
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.736786980519487,
+                "original_std_error": 0.8729555681332865,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.8726389262620318,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                7.183299583867389,
+                4.62812205990912,
+                5.589989624805286
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 4.199529577139402,
+                "original_std_error": 1.05371079824206,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 4.329706123468493,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                10.473758494960764,
+                9.336616794653029,
+                9.312542549925555
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.2923607201535505,
+                "original_std_error": 0.541817239260823,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.320023300041498,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                17.43803759095976,
+                16.692972189715125,
+                16.2502113984213
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.206259606967938,
+                "original_std_error": 0.4901349739407814,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.220883713423607,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -0.8332943708682244,
+                -2.1658773964490146,
+                -1.267163027781192
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.577888401633856,
+                "original_std_error": 0.5549481505277485,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.6206702230830468,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -4.341415283503758,
+                -5.853821003450235,
+                -4.443134249113268
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.120543154644246,
+                "original_std_error": 0.6902298271472299,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.166853918281196,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -8.406733000350126,
+                -9.08995663598518,
+                -8.536281882466726
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 6.322342827065989,
+                "original_std_error": 0.29629811973599274,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 6.329282060290239,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -14.80834766067907,
+                -15.202267129916702,
+                -14.52163256383708
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 10.155917548522382,
+                "original_std_error": 0.279014437608117,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 10.159749519982206,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "lzh": {
+        "5": {
+            "original": [
+                5.57276721195611,
+                4.8333992283751614,
+                4.472604483026928
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 0.42225450018467353,
+                "original_std_error": 0.1817209754382027,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 0.4596970478917831,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                8.413553397636177,
+                7.649321804341333,
+                7.8002397465349755
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.0456283504958384,
+                "original_std_error": 0.3304844572060547,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.0721523411195193,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                10.981338649903401,
+                11.149185663857295,
+                11.53707286372061
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.7774676075062312,
+                "original_std_error": 0.23273008121428576,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.784630076567703,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                15.069655782321092,
+                16.255593647089352,
+                16.758973119818542
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.97192581692367,
+                "original_std_error": 0.7081770478117027,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.99983153150262,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -0.8240096463055075,
+                -0.9006334259684736,
+                -1.5402602086276063
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.9116989063661376,
+                "original_std_error": 0.3211106581039272,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.924856734813893,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -5.063283890464744,
+                -3.9290577823133725,
+                -5.787854082139495
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.073268081694129,
+                "original_std_error": 0.7649687365669176,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.130616551318294,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -10.554440620640753,
+                -7.8576263059267015,
+                -10.094812560167775
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.497706837754923,
+                "original_std_error": 1.17799583748491,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.6224954128064,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -21.703797376816205,
+                -14.603387408243435,
+                -15.68300375678988
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 7.669937152716827,
+                "original_std_error": 3.123946026650091,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.281725345847253,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "sl": {
+        "5": {
+            "original": [
+                -0.05486314679716819,
+                -2.3011148980575387,
+                -1.2568707710878484
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 6.204282938647519,
+                "original_std_error": 0.9177820520510844,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 6.2717980418584744,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                1.2103522626679513,
+                -1.056480551199464,
+                1.0500829130850158
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.5986817918155,
+                "original_std_error": 1.0328938258601428,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.654095597000808,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                3.688355107117294,
+                1.7216224055357208,
+                5.342845869929893
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 11.415725539139032,
+                "original_std_error": 1.4801890488410778,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 11.511287903847258,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                10.971382971658707,
+                12.73347944917091,
+                14.26223825256158
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 12.344299775536266,
+                "original_std_error": 1.3446113009115606,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 12.417315188833848,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -4.366720349432775,
+                -6.725339190079186,
+                -6.513140495876754
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.2905864455077216,
+                "original_std_error": 0.47279046695233856,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 1.3744614214190465,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -7.607665805198127,
+                -10.646241179293071,
+                -10.908954756963368
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.3158433770194373,
+                "original_std_error": 0.7687127623720514,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 1.5239301505907636,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -11.502030823256485,
+                -14.024362620164931,
+                -14.50722325226437
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.6554611014380718,
+                "original_std_error": 1.3176786667424383,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.1158517261761713,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -19.21091612449002,
+                -20.21448571832323,
+                -21.26038834856736
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 4.771403269539797,
+                "original_std_error": 0.8367530260133625,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 4.844217665125875,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "wdy": {
+        "5": {
+            "original": [
+                0.6304243104092034,
+                2.33191489875834
+            ],
+            "calibrated": [
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.518830395416228,
+                "original_std_error": 0.8507452941745681,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.6202119975583336,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                3.815453370951807,
+                5.309190196766907
+            ],
+            "calibrated": [
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.437678216140643,
+                "original_std_error": 0.74686841290755,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.488729981379074,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                7.846037404782339,
+                8.072131045678349
+            ],
+            "calibrated": [
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 7.0409157747696565,
+                "original_std_error": 0.11304682044800485,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 7.0418232391202205,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                16.034552039229165,
+                14.307335288022808
+            ],
+            "calibrated": [
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.829056336374013,
+                "original_std_error": 0.8636083756031789,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.866922919027296,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -2.8809807233493463,
+                -2.139419596102181
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.4897998402742365,
+                "original_std_error": 0.3707805636235826,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.5172567352160633,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -6.988836094528209,
+                -6.159524197590177
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.4258198539408067,
+                "original_std_error": 0.414655948469016,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.450823268041374,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -10.582551625867602,
+                -10.682972164283186
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 4.367238104924606,
+                "original_std_error": 0.050210269207791924,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 4.367526729882644,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -16.093801014995986,
+                -17.24218148869782
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.332008748153097,
+                "original_std_error": 0.5741902368509173,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.351770124194909,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "wf": {
+        "5": {
+            "original": [
+                -0.20386172268441738,
+                -0.40687066286871637
+            ],
+            "calibrated": [
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.3053661927765665,
+                "original_std_error": 0.10150447009214947,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.306337116778881,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                1.8887157546462074,
+                3.120951612392441
+            ],
+            "calibrated": [
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 7.495166316480676,
+                "original_std_error": 0.6161179288731162,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 7.520446756276212,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                5.603771536909825,
+                6.437994524244908
+            ],
+            "calibrated": [
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 8.979116969422634,
+                "original_std_error": 0.41711149366754086,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 8.988799894798142,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                13.570692282411024,
+                12.312243235389223
+            ],
+            "calibrated": [
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 12.058532241099876,
+                "original_std_error": 0.6292245235109002,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 12.074937818085555,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -3.487184759817875,
+                -4.341687620046223
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.0855638100679512,
+                "original_std_error": 0.4272514301141739,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 1.1666158623402365,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -6.01198266664694,
+                -6.787393385600192
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.600311973876434,
+                "original_std_error": 0.38770535947662577,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.6211271387518176,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -9.020855385233787,
+                -9.103690257755284
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.937727178505464,
+                "original_std_error": 0.04141743626074845,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.937871626297496,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -15.456092560247368,
+                -15.208251057409617
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.667828191171507,
+                "original_std_error": 0.1239207514188756,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.668622357225601,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "wzr": {
+        "5": {
+            "original": [
+                0.6150186364190777,
+                1.368736078258333,
+                1.3876020778827232
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.8762144024799556,
+                "original_std_error": 0.3598350057238193,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.892880594795748,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                2.8140217381259145,
+                2.8940607486336303,
+                2.8013186981428375
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 7.163532938365873,
+                "original_std_error": 0.041053756570708,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 7.16365057564796,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                7.258779530744104,
+                7.463268589715047,
+                8.202643158807078
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 7.358436240244591,
+                "original_std_error": 0.4054310568928181,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 7.3695968847446585,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                15.886306974153566,
+                15.816301867182837,
+                15.936639885596781
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.120250424355605,
+                "original_std_error": 0.04934611957290238,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.120383919686468,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -3.049014030258808,
+                -2.055193983849033,
+                -2.8822835544197254
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.3378361438241444,
+                "original_std_error": 0.4345565420270118,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.377880826195674,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -6.453488112740822,
+                -5.936806681922338,
+                -6.10672848525182
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.834325573361673,
+                "original_std_error": 0.2150130123854757,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.8403493588514053,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -9.991447640533092,
+                -9.69294534713494,
+                -9.473148838705928
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.28081939120868,
+                "original_std_error": 0.21240625965274282,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.285089390133839,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -17.864583420702004,
+                -18.32641851593073,
+                -17.693498206788572
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 7.038499952192898,
+                "original_std_error": 0.267322095218761,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 7.043574566909303,
+                "calibrated_rmse": 0.0
+            }
+        }
+    },
+    "zjc": {
+        "5": {
+            "original": [
+                2.5986897193626723,
+                2.6240068394553666,
+                2.0876687861232175
+            ],
+            "calibrated": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "target": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "metrics": {
+                "original_mean_error": 2.5632115516862477,
+                "original_std_error": 0.24708115136323364,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 2.5750927272734865,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "10": {
+            "original": [
+                4.175552289542486,
+                4.267641580375001,
+                3.6327585360377683
+            ],
+            "calibrated": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "target": [
+                10.0,
+                10.0,
+                10.0
+            ],
+            "metrics": {
+                "original_mean_error": 5.974682531348248,
+                "original_std_error": 0.280115447691104,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 5.981245356481634,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "15": {
+            "original": [
+                5.913190526391335,
+                6.201841085996963,
+                5.84754433328428
+            ],
+            "calibrated": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "target": [
+                15.0,
+                15.0,
+                15.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.012474684775807,
+                "original_std_error": 0.1538956201863402,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.013788537881135,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "25": {
+            "original": [
+                10.457775302673317,
+                10.854242399613018,
+                10.184675338381039
+            ],
+            "calibrated": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "target": [
+                25.0,
+                25.0,
+                25.0
+            ],
+            "metrics": {
+                "original_mean_error": 14.501102319777543,
+                "original_std_error": 0.2748918573102006,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 14.503707595710589,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-5": {
+            "original": [
+                -3.2818647264926013,
+                -4.038772699712681,
+                -4.011165536375607
+            ],
+            "calibrated": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "target": [
+                -5.0,
+                -5.0,
+                -5.0
+            ],
+            "metrics": {
+                "original_mean_error": 1.2227323458063701,
+                "original_std_error": 0.3504840314459827,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 1.2719722661205224,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-10": {
+            "original": [
+                -5.93196464239743,
+                -6.259611739257148,
+                -6.168994529194277
+            ],
+            "calibrated": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "target": [
+                -10.0,
+                -10.0,
+                -10.0
+            ],
+            "metrics": {
+                "original_mean_error": 3.8798096963837145,
+                "original_std_error": 0.13814133908392773,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 3.8822681913691888,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-15": {
+            "original": [
+                -8.480778368970686,
+                -8.746800192681077,
+                -8.780167684787026
+            ],
+            "calibrated": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "target": [
+                -15.0,
+                -15.0,
+                -15.0
+            ],
+            "metrics": {
+                "original_mean_error": 6.3307512511870705,
+                "original_std_error": 0.13396308058757536,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 6.332168468334301,
+                "calibrated_rmse": 0.0
+            }
+        },
+        "-25": {
+            "original": [
+                -14.78774713036464,
+                -15.33896010032308,
+                -15.264480528898053
+            ],
+            "calibrated": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "target": [
+                -25.0,
+                -25.0,
+                -25.0
+            ],
+            "metrics": {
+                "original_mean_error": 9.869604080138075,
+                "original_std_error": 0.244189743639217,
+                "calibrated_mean_error": 0.0,
+                "calibrated_std_error": 0.0,
+                "original_rmse": 9.87262443981218,
+                "calibrated_rmse": 0.0
+            }
+        }
+    }
+}

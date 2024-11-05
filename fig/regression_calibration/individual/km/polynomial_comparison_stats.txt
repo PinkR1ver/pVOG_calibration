@@ -1,0 +1,22 @@
+Statistical Summary:
+
+Original Error:
+Mean ± SD: 6.16° ± 3.04°
+Median (IQR): 5.34° (3.72° - 7.66°)
+
+Degree 1 Error:
+Mean ± SD: 2.38 ± 1.69
+Median (IQR): 1.94(1.31 - 3.74)
+
+Degree 2 Error:
+Mean ± SD: 2.19 ± 1.52
+Median (IQR): 1.98(1.12 - 2.95)
+
+Degree 3 Error:
+Mean ± SD: 1.84 ± 1.41
+Median (IQR): 1.63(0.67 - 2.82)
+
+Degree 4 Error:
+Mean ± SD: 1.84 ± 1.41
+Median (IQR): 1.64(0.67 - 2.87)
+

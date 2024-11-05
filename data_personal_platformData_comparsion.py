@@ -18,6 +18,10 @@ def plot_platform_comparison(data, user_name, platform_value, save_path):
 
     for exp_type in user_data.keys():
         for trial in user_data[exp_type]:
+            
+            if user_name == 'wdy' and exp_type == '1':
+                continue
+            
             if platform_value in user_data[exp_type][trial]:
                 platform_data = user_data[exp_type][trial][platform_value]['data']
                 plot_data.append(platform_data)
@@ -27,16 +31,27 @@ def plot_platform_comparison(data, user_name, platform_value, save_path):
         
     plt.figure(figsize=(10, 6))
     
-    # 使用原始数据绘制箱型图
-    box_plot = plt.boxplot(
-        plot_data,
-        labels=[f'Exp{exp_type}-{trial}' 
-                for exp_type in user_data.keys()
-                for trial in user_data[exp_type] 
-                if platform_value in user_data[exp_type][trial]],
-        patch_artist=True
-    )
+    if user_name != 'wdy':
     
+        # 使用原始数据绘制箱型图
+        box_plot = plt.boxplot(
+            plot_data,
+            labels=[f'Exp{exp_type}-{trial}' 
+                    for exp_type in user_data.keys()
+                    for trial in user_data[exp_type] 
+                    if platform_value in user_data[exp_type][trial]],
+            patch_artist=True
+        )
+        
+    else:
+        exp_type = '2'
+        box_plot = plt.boxplot(
+            plot_data,
+            labels=[f'Exp{exp_type}-{trial}' 
+                    for trial in user_data[exp_type] 
+                    if platform_value in user_data[exp_type][trial]],
+            patch_artist=True
+        )
     # 设置颜色
     color = plt.cm.Set3(np.random.rand())
     for box in box_plot['boxes']:
@@ -161,7 +176,7 @@ if __name__ == '__main__':
         data = json.load(f)
     
     # 对数据进行偏移处理
-    # data = data_offset(data)
+    data = data_offset(data)
     
     # 定义所有可能的平台值
     platform_values = ["0_1", "0_2", "5", "10", "15", "25", "-5", "-10", "-15", "-25"]

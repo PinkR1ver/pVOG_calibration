@@ -1,0 +1,26 @@
+Cross-Validation Results:
+
+
+Degree 1 Polynomial:
+Train Error: 2.38° ± 0.06°
+Test Error: 2.60° ± 0.29°
+Train R²: 0.963 ± 0.001
+Test R²: 0.957 ± 0.010
+
+Degree 2 Polynomial:
+Train Error: 2.38° ± 0.06°
+Test Error: 2.64° ± 0.33°
+Train R²: 0.964 ± 0.001
+Test R²: 0.954 ± 0.013
+
+Degree 3 Polynomial:
+Train Error: 1.90° ± 0.11°
+Test Error: 2.07° ± 0.55°
+Train R²: 0.976 ± 0.002
+Test R²: 0.971 ± 0.014
+
+Degree 4 Polynomial:
+Train Error: 1.89° ± 0.12°
+Test Error: 2.11° ± 0.65°
+Train R²: 0.976 ± 0.002
+Test R²: 0.969 ± 0.017

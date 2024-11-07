@@ -1,22 +1,49 @@
 Statistical Summary:
 
+Cross-Validation Results:
+
+Degree 1:
+Train Error (Mean ± SD): 2.00° ± 0.08°
+Test Error (Mean ± SD): 2.03° ± 0.33°
+Train R² (Mean ± SD): 0.973 ± 0.002
+Test R² (Mean ± SD): 0.970 ± 0.007
+
+Degree 2:
+Train Error (Mean ± SD): 1.87° ± 0.10°
+Test Error (Mean ± SD): 2.02° ± 0.39°
+Train R² (Mean ± SD): 0.975 ± 0.003
+Test R² (Mean ± SD): 0.967 ± 0.017
+
+Degree 3:
+Train Error (Mean ± SD): 1.78° ± 0.07°
+Test Error (Mean ± SD): 1.89° ± 0.26°
+Train R² (Mean ± SD): 0.981 ± 0.001
+Test R² (Mean ± SD): 0.976 ± 0.008
+
+Degree 4:
+Train Error (Mean ± SD): 1.62° ± 0.04°
+Test Error (Mean ± SD): 1.70° ± 0.17°
+Train R² (Mean ± SD): 0.984 ± 0.001
+Test R² (Mean ± SD): 0.981 ± 0.003
+
+
 Original Error:
-Mean � SD: 6.37� � 3.79�
-Median (IQR): 5.74� (3.19� - 9.05�)
+Mean ± SD: 6.37° ± 3.79°
+Median (IQR): 5.74° (3.19° - 9.05°)
 
 Degree 1 Error:
-Mean � SD: 1.99 � 1.59
-Median (IQR): 1.51(0.69 - 2.92)
+Mean ± SD: 1.99° ± 1.59°
+Median (IQR): 1.51° (0.69° - 2.92)°
 
 Degree 2 Error:
-Mean � SD: 1.89 � 1.59
-Median (IQR): 1.53(0.70 - 2.89)
+Mean ± SD: 1.89° ± 1.59°
+Median (IQR): 1.53° (0.70° - 2.89)°
 
 Degree 3 Error:
-Mean � SD: 1.79 � 1.19
-Median (IQR): 1.54(0.82 - 2.49)
+Mean ± SD: 1.79° ± 1.19°
+Median (IQR): 1.54° (0.82° - 2.49)°
 
 Degree 4 Error:
-Mean � SD: 1.63 � 1.13
-Median (IQR): 1.50(0.83 - 2.34)
+Mean ± SD: 1.63° ± 1.13°
+Median (IQR): 1.50° (0.83° - 2.34)°
 

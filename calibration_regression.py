@@ -11,6 +11,7 @@ from rich.progress import track
 from utils import *
 import pandas as pd
 from matplotlib.gridspec import GridSpec
+from sklearn.model_selection import KFold
 
 def ensure_dir(directory):
     """确保目录存在"""
@@ -249,36 +250,86 @@ def plot_error_comparison(results, save_dir):
     plt.savefig(os.path.join(save_dir, 'individual_error_comparison.png'), dpi=300)
     plt.close()
 
+def fit_and_evaluate_with_cv(measured, target, degree, n_splits=5):
+    """使用交叉验证拟合和评估校准模型"""
+    kf = KFold(n_splits=n_splits, shuffle=True, random_state=42)
+    cv_results = {
+        'train_errors': [],
+        'test_errors': [],
+        'train_r2': [],
+        'test_r2': []
+    }
+    
+    measured = np.array(measured)
+    target = np.array(target)
+    
+    for train_idx, test_idx in kf.split(measured):
+        # 分割数据
+        X_train, X_test = measured[train_idx], measured[test_idx]
+        y_train, y_test = target[train_idx], target[test_idx]
+        
+        # 拟合模型
+        calib_func, stats = fit_calibration_curve(X_train, y_train, degree)
+        
+        # 预测
+        y_train_pred = calib_func(X_train)
+        y_test_pred = calib_func(X_test)
+        
+        # 计算误差
+        train_error = np.mean(np.abs(y_train_pred - y_train))
+        test_error = np.mean(np.abs(y_test_pred - y_test))
+        
+        # 计算R²
+        train_r2 = r2_score(y_train, y_train_pred)
+        test_r2 = r2_score(y_test, y_test_pred)
+        
+        # 存储结果
+        cv_results['train_errors'].append(train_error)
+        cv_results['test_errors'].append(test_error)
+        cv_results['train_r2'].append(train_r2)
+        cv_results['test_r2'].append(test_r2)
+    
+    return cv_results
+
 def plot_calibration_comparison(measured, target, degrees, save_path):
     """对比不同阶数多项式拟合的效果"""
     plt.figure(figsize=(15, 15))
-    
-    # 创建GridSpec来更好地控制子图布局
     gs = GridSpec(3, 2, figure=plt.gcf())
-    
     results = {}
+    
+    # 添加交叉验证结果存储
+    cv_results = {}
     
     # 1-4: 不同阶数的拟合效果图
     for i, degree in enumerate(degrees, 1):
         plt.subplot(gs[i-1]) if i <= 2 else plt.subplot(gs[i-1])
         
-        # 拟合模型
+        # 拟合模型和交叉验证
         calib_func, stats = fit_calibration_curve(measured, target, degree)
+        cv_result = fit_and_evaluate_with_cv(measured, target, degree)
+        cv_results[degree] = cv_result
+        
         calibrated = calib_func(np.array(measured))
         results[degree] = {'stats': stats, 'calibrated': calibrated}
         
-        # 绘制原始数据点和校准后的数据点
+        # 绘制数据点和拟合线
         plt.scatter(measured, target, alpha=0.5, label='Original', color='blue')
         plt.scatter(measured, calibrated, alpha=0.5, label='Calibrated', color='red')
         
-        # 添加拟合线
         x_fit = np.linspace(min(measured), max(measured), 100)
         y_fit = calib_func(x_fit)
         plt.plot(x_fit, y_fit, 'g-', label='Calibration Function')
         
+        # 添加交叉验证结果到标题
+        mean_train_error = np.mean(cv_result['train_errors'])
+        mean_test_error = np.mean(cv_result['test_errors'])
+        plt.title(f'Degree {degree} Polynomial\n' + 
+                 f'R² = {stats["r2"]:.3f}\n' +
+                 f'CV Train Error: {mean_train_error:.2f}°\n' +
+                 f'CV Test Error: {mean_test_error:.2f}°')
+        
         plt.xlabel('Measured Angle')
         plt.ylabel('Target/Calibrated Angle')
-        plt.title(f'Degree {degree} Polynomial\nR² = {stats["r2"]:.3f}')
         plt.legend()
         plt.grid(True, linestyle='--', alpha=0.3)
     
@@ -332,14 +383,25 @@ def plot_calibration_comparison(measured, target, degrees, save_path):
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.close()
     
-    # 生成并保存统计信息
+    # 更新统计信息文本
     stats_text = "Statistical Summary:\n\n"
+    stats_text += "Cross-Validation Results:\n"
+    for degree in degrees:
+        cv_result = cv_results[degree]
+        stats_text += f"\nDegree {degree}:\n"
+        stats_text += f"Train Error (Mean ± SD): {np.mean(cv_result['train_errors']):.2f}° ± {np.std(cv_result['train_errors']):.2f}°\n"
+        stats_text += f"Test Error (Mean ± SD): {np.mean(cv_result['test_errors']):.2f}° ± {np.std(cv_result['test_errors']):.2f}°\n"
+        stats_text += f"Train R² (Mean ± SD): {np.mean(cv_result['train_r2']):.3f} ± {np.std(cv_result['train_r2']):.3f}\n"
+        stats_text += f"Test R² (Mean ± SD): {np.mean(cv_result['test_r2']):.3f} ± {np.std(cv_result['test_r2']):.3f}\n"
+    
+    stats_text +=  "\n\n"
     
     # 原始误差统计
     stats_text += "Original Error:\n"
     stats_text += f"Mean ± SD: {np.mean(original_error):.2f}° ± {np.std(original_error):.2f}°\n"
     stats_text += f"Median (IQR): {np.median(original_error):.2f}° "
     stats_text += f"({np.percentile(original_error, 25):.2f}° - {np.percentile(original_error, 75):.2f}°)\n\n"
+    
     
     # 各阶数校准后的误差统计
     for degree in degrees:
@@ -351,7 +413,7 @@ def plot_calibration_comparison(measured, target, degrees, save_path):
     
     # 保存统计信息到文本文件
     stats_path = os.path.splitext(save_path)[0] + '_stats.txt'
-    with open(stats_path, 'w') as f:
+    with open(stats_path, 'w', encoding='utf-8') as f:
         f.write(stats_text)
     
     return results
@@ -470,7 +532,7 @@ def collect_user_data(data, user):
     
     # 遍历实验类型1和2
     for exp_type in ['1', '2']:
-        if exp_type in data[user]:  # 确保实验类型存在
+        if exp_type in data[user]:  # 保实验类型存在
             user_data = data[user][exp_type]
             for trial in user_data:
                 for platform in user_data[trial]:
@@ -502,6 +564,465 @@ def serialize_and_save_results(results, save_dir):
     # 保存结果
     with open(os.path.join(save_dir, 'polynomial_comparison_results.json'), 'w') as f:
         json.dump(serializable_results, f, indent=4)
+
+def fit_and_evaluate_with_user_cv(data, degrees, n_splits=5):
+    """使用基于用户的交叉验证进行评估"""
+    users = list(data.keys())
+    kf = KFold(n_splits=n_splits, shuffle=True, random_state=42)
+    cv_results = {degree: {
+        'train_data': [],
+        'test_data': [],
+        'train_errors': [],
+        'test_errors': [],
+        'train_r2': [],
+        'test_r2': [],
+        'models': []
+    } for degree in degrees}
+    
+    # 进行交叉验证
+    for fold, (train_idx, test_idx) in enumerate(kf.split(users)):
+        # 分割训练集和测试集用户
+        train_users = [users[i] for i in train_idx]
+        test_users = [users[i] for i in test_idx]
+        
+        # 收集训练集和测试集数据
+        train_measured, train_target = [], []
+        test_measured, test_target = [], []
+        
+        # 收集训练集数据
+        for user in train_users:
+            user_measured, user_target = collect_user_data(data, user)
+            train_measured.extend(user_measured)
+            train_target.extend(user_target)
+        
+        # 收集测试集数据
+        for user in test_users:
+            user_measured, user_target = collect_user_data(data, user)
+            test_measured.extend(user_measured)
+            test_target.extend(user_target)
+        
+        # 对每个多项式阶数进行评估
+        for degree in degrees:
+            # 拟合模型
+            calib_func, stats = fit_calibration_curve(train_measured, train_target, degree)
+            
+            # 预测
+            train_pred = calib_func(np.array(train_measured))
+            test_pred = calib_func(np.array(test_measured))
+            
+            # 计算误差和R²
+            train_error = np.mean(np.abs(train_pred - np.array(train_target)))
+            test_error = np.mean(np.abs(test_pred - np.array(test_target)))
+            train_r2 = r2_score(train_target, train_pred)
+            test_r2 = r2_score(test_target, test_pred)
+            
+            # 存储结果
+            cv_results[degree]['train_data'].append((train_measured, train_target, train_pred))
+            cv_results[degree]['test_data'].append((test_measured, test_target, test_pred))
+            cv_results[degree]['train_errors'].append(train_error)
+            cv_results[degree]['test_errors'].append(test_error)
+            cv_results[degree]['train_r2'].append(train_r2)
+            cv_results[degree]['test_r2'].append(test_r2)
+            cv_results[degree]['models'].append((calib_func, stats))
+        
+    return cv_results
+
+def plot_cv_results(cv_results, degrees, save_dir):
+    """绘制交叉验证结果"""
+    for fold in range(len(cv_results[degrees[0]]['train_data'])):
+        plt.figure(figsize=(20, 10))
+        gs = GridSpec(2, 4, figure=plt.gcf())
+        
+        # 1-4: 不同阶数的拟合效果图
+        for i, degree in enumerate(degrees, 1):
+            plt.subplot(gs[0, i-1])
+            
+            # 获取当前折的数据
+            train_measured, train_target, train_pred = cv_results[degree]['train_data'][fold]
+            test_measured, test_target, test_pred = cv_results[degree]['test_data'][fold]
+            
+            # 绘制训练集和测试集数据
+            plt.scatter(train_measured, train_target, alpha=0.5, label='Train', color='blue')
+            plt.scatter(train_measured, train_pred, alpha=0.5, label='Train Pred', color='lightblue')
+            plt.scatter(test_measured, test_target, alpha=0.5, label='Test', color='red')
+            plt.scatter(test_measured, test_pred, alpha=0.5, label='Test Pred', color='lightcoral')
+            
+            # 绘制拟合线
+            calib_func, stats = cv_results[degree]['models'][fold]
+            x_fit = np.linspace(min(train_measured + test_measured), 
+                              max(train_measured + test_measured), 100)
+            y_fit = calib_func(x_fit)
+            plt.plot(x_fit, y_fit, 'g-', label='Calibration Function')
+            
+            plt.title(f'Degree {degree} Polynomial (Fold {fold+1})\n' + 
+                     f'Train R² = {cv_results[degree]["train_r2"][fold]:.3f}\n' +
+                     f'Test R² = {cv_results[degree]["test_r2"][fold]:.3f}')
+            plt.xlabel('Measured Angle')
+            plt.ylabel('Target/Calibrated Angle')
+            plt.legend()
+            plt.grid(True, linestyle='--', alpha=0.3)
+        
+        # 5-8: 每个阶数的误差箱线图对比
+        for i, degree in enumerate(degrees):
+            plt.subplot(gs[1, i])
+            error_data = []
+            labels = []
+            
+            # 获取数据
+            train_measured, train_target, train_pred = cv_results[degree]['train_data'][fold]
+            test_measured, test_target, test_pred = cv_results[degree]['test_data'][fold]
+            
+            # 原始误差
+            original_error = np.abs(np.array(train_measured) - np.array(train_target))
+            error_data.append(original_error)
+            labels.append('Original')
+            
+            # 训练集误差
+            train_error = np.abs(np.array(train_pred) - np.array(train_target))
+            error_data.append(train_error)
+            labels.append('Train')
+            
+            # 测试集误差
+            test_error = np.abs(np.array(test_pred) - np.array(test_target))
+            error_data.append(test_error)
+            labels.append('Test')
+            
+            # 绘制箱线图
+            plt.boxplot(error_data, labels=labels)
+            plt.xticks(rotation=45)
+            plt.ylabel('Absolute Error (degrees)')
+            plt.title(f'Degree {degree} Error Distribution\n(Fold {fold+1})')
+            plt.grid(True, linestyle='--', alpha=0.3)
+        
+        plt.tight_layout()
+        plt.savefig(os.path.join(save_dir, f'cv_fold_{fold+1}.png'), 
+                   dpi=300, bbox_inches='tight')
+        plt.close()
+
+def plot_error_distribution_comparison(results, save_dir):
+    """绘制校准前后误差分布的对比图"""
+    # 添加调试信息
+    print("Results keys:", results.keys())
+    
+    # 打印数据结构（避免 JSON 序列化）
+    for key in results.keys():
+        print(f"\nKey {key}:")
+        if isinstance(results[key], dict):
+            for subkey in results[key]:
+                print(f"  {subkey}: {type(results[key][subkey])}")
+        else:
+            print(f"Type: {type(results[key])}")
+    
+    plt.figure(figsize=(15, 10))
+    gs = GridSpec(2, 2)
+    
+    # 获取原始误差和校准后误差
+    error_data = {}
+    
+    # 假设每个 key (1,2,3,4) 包含对应阶数的结果
+    for degree in [1, 2, 3, 4]:
+        if degree in results:
+            if 'stats' in results[degree]:
+                if degree == 1:  # 只在第一次时获取原始误差
+                    error_data['Original'] = results[degree]['original_error']
+                error_data[f'Degree {degree}'] = results[degree]['calibrated_error']
+    
+    # 1. 核密度估计图
+    plt.subplot(gs[0, 0])
+    for name, data in error_data.items():
+        sns.kdeplot(data=data, label=name, alpha=0.5)
+    
+    plt.xlabel('Absolute Error (degrees)')
+    plt.ylabel('Density')
+    plt.title('Error Distribution (KDE)')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    # 2. 箱线图
+    plt.subplot(gs[0, 1])
+    sns.boxplot(data=pd.DataFrame(error_data))
+    plt.xticks(rotation=45)
+    plt.ylabel('Absolute Error (degrees)')
+    plt.title('Error Distribution (Box Plot)')
+    plt.grid(True, alpha=0.3)
+    
+    # 3. 累积分布函数
+    plt.subplot(gs[1, 0])
+    for name, data in error_data.items():
+        sorted_data = np.sort(data)
+        cumulative = np.arange(1, len(sorted_data) + 1) / len(sorted_data)
+        plt.plot(sorted_data, cumulative, label=name, alpha=0.7)
+    
+    plt.xlabel('Absolute Error (degrees)')
+    plt.ylabel('Cumulative Probability')
+    plt.title('Cumulative Distribution Function')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    # 4. 统计信息表格
+    plt.subplot(gs[1, 1])
+    plt.axis('off')
+    stats_text = "Error Distribution Statistics:\n\n"
+    
+    for name, data in error_data.items():
+        stats_text += f"{name}:\n"
+        stats_text += f"Mean ± SD: {np.mean(data):.2f}° ± {np.std(data):.2f}°\n"
+        stats_text += f"Median (IQR): {np.median(data):.2f}° "
+        stats_text += f"({np.percentile(data, 25):.2f}° - {np.percentile(data, 75):.2f}°)\n\n"
+    
+    plt.text(0, 1, stats_text, fontsize=10, verticalalignment='top', 
+             fontfamily='monospace')
+    
+    plt.tight_layout()
+    plt.savefig(os.path.join(save_dir, 'error_distribution_comparison.png'), 
+                dpi=300, bbox_inches='tight')
+    plt.close()
+
+def calculate_calibration_stats(data, degrees):
+    """计算校准前后的误差统计"""
+    # 收集所有数据
+    measured = []
+    target = []
+    
+    # 从数据中收集测量值和目标值
+    for user in data:
+        for exp_type in ['1', '2']:
+            if exp_type in data[user]:
+                user_data = data[user][exp_type]
+                for trial in user_data:
+                    for platform in user_data[trial]:
+                        if '_' not in platform:
+                            measured.append(np.mean(user_data[trial][platform]['data']))
+                            target.append(float(platform))
+    
+    measured = np.array(measured)
+    target = np.array(target)
+    
+    # 计算原始误差
+    original_error = np.abs(measured - target)
+    
+    # 为每个多项式阶数计算校准后的误差
+    calibration_stats = {
+        'original': {
+            'mean': np.mean(original_error),
+            'std': np.std(original_error),
+            'median': np.median(original_error),
+            'q1': np.percentile(original_error, 25),
+            'q3': np.percentile(original_error, 75),
+            'errors': original_error
+        }
+    }
+    
+    for degree in degrees:
+        # 拟合校准曲线
+        calib_func, _ = fit_calibration_curve(measured, target, degree)
+        
+        # 计算校准后的值和误差
+        calibrated = calib_func(measured)
+        calibrated_error = np.abs(calibrated - target)
+        
+        calibration_stats[f'degree_{degree}'] = {
+            'mean': np.mean(calibrated_error),
+            'std': np.std(calibrated_error),
+            'median': np.median(calibrated_error),
+            'q1': np.percentile(calibrated_error, 25),
+            'q3': np.percentile(calibrated_error, 75),
+            'errors': calibrated_error
+        }
+    
+    # 生成报告
+    report = "Calibration Results:\n\n"
+    
+    # 添加原始误差统计
+    report += "Original Error:\n"
+    report += f"Mean ± SD: {calibration_stats['original']['mean']:.2f}° ± {calibration_stats['original']['std']:.2f}°\n"
+    report += f"Median (IQR): {calibration_stats['original']['median']:.2f}° "
+    report += f"({calibration_stats['original']['q1']:.2f}° - {calibration_stats['original']['q3']:.2f}°)\n\n"
+    
+    # 添加每个阶数的校准结果
+    for degree in degrees:
+        stats = calibration_stats[f'degree_{degree}']
+        report += f"Degree {degree} Polynomial:\n"
+        report += f"Mean ± SD: {stats['mean']:.2f}° ± {stats['std']:.2f}°\n"
+        report += f"Median (IQR): {stats['median']:.2f}° "
+        report += f"({stats['q1']:.2f}° - {stats['q3']:.2f}°)\n\n"
+    
+    return calibration_stats, report
+
+def calculate_calibration_stats_with_split(data, degrees, test_ratio=0.2):
+    """计算训练集和测试集的校准统计"""
+    # 收集所有数据
+    measured = []
+    target = []
+    
+    # 从数据中收集测量值和目标值
+    for user in data:
+        for exp_type in ['1', '2']:
+            if exp_type in data[user]:
+                user_data = data[user][exp_type]
+                for trial in user_data:
+                    for platform in user_data[trial]:
+                        if '_' not in platform:
+                            measured.append(np.mean(user_data[trial][platform]['data']))
+                            target.append(float(platform))
+    
+    measured = np.array(measured)
+    target = np.array(target)
+    
+    # 随机分割数据为训练集和测试集
+    indices = np.random.permutation(len(measured))
+    test_size = int(len(measured) * test_ratio)
+    test_indices = indices[:test_size]
+    train_indices = indices[test_size:]
+    
+    X_train, X_test = measured[train_indices], measured[test_indices]
+    y_train, y_test = target[train_indices], target[test_indices]
+    
+    # 计算原始误差
+    train_original_error = np.abs(X_train - y_train)
+    test_original_error = np.abs(X_test - y_test)
+    
+    # 存储统计结果
+    calibration_stats = {
+        'train': {
+            'original': {
+                'mean': np.mean(train_original_error),
+                'std': np.std(train_original_error),
+                'median': np.median(train_original_error),
+                'q1': np.percentile(train_original_error, 25),
+                'q3': np.percentile(train_original_error, 75),
+                'errors': train_original_error
+            }
+        },
+        'test': {
+            'original': {
+                'mean': np.mean(test_original_error),
+                'std': np.std(test_original_error),
+                'median': np.median(test_original_error),
+                'q1': np.percentile(test_original_error, 25),
+                'q3': np.percentile(test_original_error, 75),
+                'errors': test_original_error
+            }
+        }
+    }
+    
+    # 为每个多项式阶数计算校准后的误差
+    for degree in degrees:
+        # 拟合校准曲线（仅使用训练集）
+        calib_func, _ = fit_calibration_curve(X_train, y_train, degree)
+        
+        # 计算训练集的校准误差
+        train_calibrated = calib_func(X_train)
+        train_calibrated_error = np.abs(train_calibrated - y_train)
+        
+        # 计算测试集的校准误差
+        test_calibrated = calib_func(X_test)
+        test_calibrated_error = np.abs(test_calibrated - y_test)
+        
+        # 存储训练集统计
+        calibration_stats['train'][f'degree_{degree}'] = {
+            'mean': np.mean(train_calibrated_error),
+            'std': np.std(train_calibrated_error),
+            'median': np.median(train_calibrated_error),
+            'q1': np.percentile(train_calibrated_error, 25),
+            'q3': np.percentile(train_calibrated_error, 75),
+            'errors': train_calibrated_error
+        }
+        
+        # 存储测试集统计
+        calibration_stats['test'][f'degree_{degree}'] = {
+            'mean': np.mean(test_calibrated_error),
+            'std': np.std(test_calibrated_error),
+            'median': np.median(test_calibrated_error),
+            'q1': np.percentile(test_calibrated_error, 25),
+            'q3': np.percentile(test_calibrated_error, 75),
+            'errors': test_calibrated_error
+        }
+    
+    # 生成报告
+    report = "Calibration Results (Train-Test Split):\n\n"
+    
+    # 训练集报告
+    report += "Training Set:\n" + "="*50 + "\n"
+    report += "Original Error:\n"
+    stats = calibration_stats['train']['original']
+    report += f"Mean ± SD: {stats['mean']:.2f}° ± {stats['std']:.2f}°\n"
+    report += f"Median (IQR): {stats['median']:.2f}° ({stats['q1']:.2f}° - {stats['q3']:.2f}°)\n\n"
+    
+    for degree in degrees:
+        stats = calibration_stats['train'][f'degree_{degree}']
+        report += f"Degree {degree} Polynomial:\n"
+        report += f"Mean ± SD: {stats['mean']:.2f}° ± {stats['std']:.2f}°\n"
+        report += f"Median (IQR): {stats['median']:.2f}° ({stats['q1']:.2f}° - {stats['q3']:.2f}°)\n\n"
+    
+    # 测试集报告
+    report += "\nTest Set:\n" + "="*50 + "\n"
+    report += "Original Error:\n"
+    stats = calibration_stats['test']['original']
+    report += f"Mean ± SD: {stats['mean']:.2f}° ± {stats['std']:.2f}°\n"
+    report += f"Median (IQR): {stats['median']:.2f}° ({stats['q1']:.2f}° - {stats['q3']:.2f}°)\n\n"
+    
+    for degree in degrees:
+        stats = calibration_stats['test'][f'degree_{degree}']
+        report += f"Degree {degree} Polynomial:\n"
+        report += f"Mean ± SD: {stats['mean']:.2f}° ± {stats['std']:.2f}°\n"
+        report += f"Median (IQR): {stats['median']:.2f}° ({stats['q1']:.2f}° - {stats['q3']:.2f}°)\n\n"
+    
+    return calibration_stats, report
+
+def plot_train_test_error_distribution(stats, save_dir):
+    """绘制训练集和测试集的误差分布对比图"""
+    plt.figure(figsize=(15, 10))
+    gs = GridSpec(2, 2)
+    
+    # 1. 训练集核密度估计图
+    plt.subplot(gs[0, 0])
+    sns.kdeplot(data=stats['train']['original']['errors'], 
+                label='Original', color='red', alpha=0.5)
+    for degree in [1, 2, 3, 4]:
+        sns.kdeplot(data=stats['train'][f'degree_{degree}']['errors'], 
+                   label=f'Degree {degree}', alpha=0.5)
+    
+    plt.xlabel('Absolute Error (degrees)')
+    plt.ylabel('Density')
+    plt.title('Training Set Error Distribution (KDE)')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    # 2. 测试集核密度估计图
+    plt.subplot(gs[0, 1])
+    sns.kdeplot(data=stats['test']['original']['errors'], 
+                label='Original', color='red', alpha=0.5)
+    for degree in [1, 2, 3, 4]:
+        sns.kdeplot(data=stats['test'][f'degree_{degree}']['errors'], 
+                   label=f'Degree {degree}', alpha=0.5)
+    
+    plt.xlabel('Absolute Error (degrees)')
+    plt.ylabel('Density')
+    plt.title('Test Set Error Distribution (KDE)')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    # 3. 训练集和测试集箱线图
+    plt.subplot(gs[1, :])
+    error_data = {
+        'Train Original': stats['train']['original']['errors'],
+        'Test Original': stats['test']['original']['errors']
+    }
+    for degree in [1, 2, 3, 4]:
+        error_data[f'Train Degree {degree}'] = stats['train'][f'degree_{degree}']['errors']
+        error_data[f'Test Degree {degree}'] = stats['test'][f'degree_{degree}']['errors']
+    
+    sns.boxplot(data=pd.DataFrame(error_data))
+    plt.xticks(rotation=45)
+    plt.ylabel('Absolute Error (degrees)')
+    plt.title('Error Distribution Comparison (Train vs Test)')
+    plt.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig(os.path.join(save_dir, 'train_test_error_distribution.png'), 
+                dpi=300, bbox_inches='tight')
+    plt.close()
 
 def main():
     # 读取数据
@@ -540,10 +1061,33 @@ def main():
         )
     
     # 3. 分析整体模型应用到个人数据的效果
-    print("分析整体模型在个人数据上的效果...")
+    print("分析整模型在个人数据上的效果...")
     overall_model_results = analyze_overall_calibration_effect(
         data, degrees, save_dir
     )
+    
+    # 创建交叉验证结果目录
+    cv_dir = os.path.join(save_dir, 'cross_validation')
+    ensure_dir(cv_dir)
+    
+    # 进行基于用户的交叉验证
+    print("进行基于用户的交叉验证...")
+    cv_results = fit_and_evaluate_with_user_cv(data, degrees)
+    
+    # 绘制交叉验证结果
+    plot_cv_results(cv_results, degrees, cv_dir)
+    
+    # 生成交叉验证报告
+    cv_report = "Cross-Validation Results:\n\n"
+    for degree in degrees:
+        cv_report += f"\nDegree {degree} Polynomial:\n"
+        cv_report += f"Train Error: {np.mean(cv_results[degree]['train_errors']):.2f}° ± {np.std(cv_results[degree]['train_errors']):.2f}°\n"
+        cv_report += f"Test Error: {np.mean(cv_results[degree]['test_errors']):.2f}° ± {np.std(cv_results[degree]['test_errors']):.2f}°\n"
+        cv_report += f"Train R²: {np.mean(cv_results[degree]['train_r2']):.3f} ± {np.std(cv_results[degree]['train_r2']):.3f}\n"
+        cv_report += f"Test R²: {np.mean(cv_results[degree]['test_r2']):.3f} ± {np.std(cv_results[degree]['test_r2']):.3f}\n"
+    
+    with open(os.path.join(cv_dir, 'cv_report.txt'), 'w', encoding='utf-8') as f:
+        f.write(cv_report)
     
     # 保存所有结果
     results = {
@@ -557,6 +1101,26 @@ def main():
     
     # 生成汇总报告
     generate_summary_report(results, save_dir)
+    
+    # 计算校准统计
+    print("计算校准统计...")
+    calibration_stats, calibration_report = calculate_calibration_stats(data, degrees)
+    
+    # 保存报告
+    with open(os.path.join(save_dir, 'calibration_stats.txt'), 'w', encoding='utf-8') as f:
+        f.write(calibration_report)
+    
+    # 计算训练集和测试集的校准统计
+    print("计算训练集和测试集的校准统计...")
+    split_stats, split_report = calculate_calibration_stats_with_split(data, degrees)
+    
+    # 保存报告
+    with open(os.path.join(save_dir, 'train_test_calibration_stats.txt'), 'w', encoding='utf-8') as f:
+        f.write(split_report)
+    
+    # # 绘制误差分布对比图
+    # print("绘制误差分布对比图...")
+    # plot_error_distribution_comparison(calibration_stats, save_dir)
 
 def generate_summary_report(results, save_dir):
     """生成汇总报告"""

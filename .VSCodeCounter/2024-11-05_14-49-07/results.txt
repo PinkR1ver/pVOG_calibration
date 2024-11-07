@@ -1,0 +1,107 @@
+Date : 2024-11-05 14:49:07
+Directory : c:\Users\83549\Documents\github_proj\pVOG_calibration
+Total : 59 files,  175354 codes, 319 comments, 587 blanks, all 176260 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| JSON     |         45 |    172,958 |          0 |          0 |    172,958 |
+| Python   |         11 |      2,223 |        319 |        568 |      3,110 |
+| Excel    |          2 |        102 |          0 |          1 |        103 |
+| Markdown |          1 |         71 |          0 |         18 |         89 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                   |         59 |    175,354 |        319 |        587 |    176,260 |
+| . (Files)                                                                                                           |         11 |      2,223 |        319 |        568 |      3,110 |
+| arch                                                                                                                |          1 |         54 |          0 |          0 |         54 |
+| arch\stable                                                                                                         |          1 |         54 |          0 |          0 |         54 |
+| fig                                                                                                                 |          3 |      5,837 |          0 |         19 |      5,856 |
+| fig\regression_calibration                                                                                          |          2 |      5,789 |          0 |         18 |      5,807 |
+| fig\stable                                                                                                          |          1 |         48 |          0 |          1 |         49 |
+| result                                                                                                              |         44 |    167,240 |          0 |          0 |    167,240 |
+| result (Files)                                                                                                      |          3 |     98,678 |          0 |          0 |     98,678 |
+| result\ds                                                                                                           |          2 |      4,654 |          0 |          0 |      4,654 |
+| result\dx                                                                                                           |          2 |      3,112 |          0 |          0 |      3,112 |
+| result\dyl                                                                                                          |          3 |      5,156 |          0 |          0 |      5,156 |
+| result\jyh                                                                                                          |          3 |      3,233 |          0 |          0 |      3,233 |
+| result\km                                                                                                           |          3 |      5,047 |          0 |          0 |      5,047 |
+| result\lry                                                                                                          |          3 |      3,328 |          0 |          0 |      3,328 |
+| result\lzh                                                                                                          |          3 |      5,142 |          0 |          0 |      5,142 |
+| result\platt_calibration                                                                                            |          1 |      2,330 |          0 |          0 |      2,330 |
+| result\sl                                                                                                           |          3 |      5,874 |          0 |          0 |      5,874 |
+| result\wdy                                                                                                          |         10 |     15,983 |          0 |          0 |     15,983 |
+| result\wf                                                                                                           |          2 |      3,463 |          0 |          0 |      3,463 |
+| result\wzr                                                                                                          |          3 |      6,835 |          0 |          0 |      6,835 |
+| result\zjc                                                                                                          |          3 |      4,405 |          0 |          0 |      4,405 |
++---------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                            | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\arch\stable\stability_analysis.xlsx                           | Excel    |         54 |          0 |          0 |         54 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\calibration_regression.py                                     | Python   |        572 |         90 |        141 |        803 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_analyze.py                                               | Python   |        209 |         25 |         43 |        277 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_calibration.py                                           | Python   |        534 |         69 |        122 |        725 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_filter.py                                                | Python   |         17 |          2 |          6 |         25 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_get.py                                                   | Python   |        128 |         14 |         35 |        177 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_multiperson_platformData_comparsion.py                   | Python   |        282 |         51 |         76 |        409 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_personal_platformData_comparsion.py                      | Python   |        139 |         19 |         43 |        201 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_personal_platformData_relative_comparison.py             | Python   |        125 |         23 |         24 |        172 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_stable.py                                                | Python   |        141 |         19 |         44 |        204 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\data_statistics_cal.py                                        | Python   |         61 |          7 |         27 |         95 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\fig\regression_calibration\calibration_report.md              | Markdown |         71 |          0 |         18 |         89 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\fig\regression_calibration\polynomial_comparison_results.json | JSON     |      5,718 |          0 |          0 |      5,718 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\fig\stable\stability_analysis.xlsx                            | Excel    |         48 |          0 |          1 |         49 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\calibrated_statistics_result.json                      | JSON     |     49,246 |          0 |          0 |     49,246 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\calibration_errors.json                                | JSON     |        186 |          0 |          0 |        186 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\ds\1-2_platforms.json                                  | JSON     |      2,328 |          0 |          0 |      2,328 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\ds\1-3_platforms.json                                  | JSON     |      2,326 |          0 |          0 |      2,326 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\dx\1-1_platforms.json                                  | JSON     |      1,558 |          0 |          0 |      1,558 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\dx\1-4_platforms.json                                  | JSON     |      1,554 |          0 |          0 |      1,554 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\dyl\1-1_platforms.json                                 | JSON     |      2,215 |          0 |          0 |      2,215 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\dyl\1-2_platforms.json                                 | JSON     |      1,909 |          0 |          0 |      1,909 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\dyl\1-3_platforms.json                                 | JSON     |      1,032 |          0 |          0 |      1,032 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\jyh\1-1_platforms.json                                 | JSON     |      1,379 |          0 |          0 |      1,379 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\jyh\1-2_platforms.json                                 | JSON     |        775 |          0 |          0 |        775 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\jyh\1-3_platforms.json                                 | JSON     |      1,079 |          0 |          0 |      1,079 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\km\1-1_platforms.json                                  | JSON     |      1,331 |          0 |          0 |      1,331 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\km\1-2_platforms.json                                  | JSON     |      1,987 |          0 |          0 |      1,987 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\km\1-3_platforms.json                                  | JSON     |      1,729 |          0 |          0 |      1,729 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\lry\1-1_platforms.json                                 | JSON     |      1,363 |          0 |          0 |      1,363 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\lry\1-2_platforms.json                                 | JSON     |        929 |          0 |          0 |        929 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\lry\1-3_platforms.json                                 | JSON     |      1,036 |          0 |          0 |      1,036 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\lzh\1-1_platforms.json                                 | JSON     |      2,309 |          0 |          0 |      2,309 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\lzh\1-2_platforms.json                                 | JSON     |        974 |          0 |          0 |        974 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\lzh\1-3_platforms.json                                 | JSON     |      1,859 |          0 |          0 |      1,859 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\platt_calibration\calibration_results.json             | JSON     |      2,330 |          0 |          0 |      2,330 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\sl\1-1_platforms.json                                  | JSON     |      2,179 |          0 |          0 |      2,179 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\sl\1-2_platforms.json                                  | JSON     |      1,949 |          0 |          0 |      1,949 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\sl\1-3_platforms.json                                  | JSON     |      1,746 |          0 |          0 |      1,746 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\statistics_result.json                                 | JSON     |     49,246 |          0 |          0 |     49,246 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\1-2_platforms.json                                 | JSON     |      2,366 |          0 |          0 |      2,366 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\1-3_platforms.json                                 | JSON     |      1,106 |          0 |          0 |      1,106 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-1_platforms.json                                 | JSON     |      2,146 |          0 |          0 |      2,146 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-2_platforms.json                                 | JSON     |      1,395 |          0 |          0 |      1,395 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-3_platforms.json                                 | JSON     |      1,988 |          0 |          0 |      1,988 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-4_platforms.json                                 | JSON     |      1,906 |          0 |          0 |      1,906 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-5_platforms.json                                 | JSON     |      1,915 |          0 |          0 |      1,915 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-7_platforms.json                                 | JSON     |      1,987 |          0 |          0 |      1,987 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-8_platforms.json                                 | JSON     |        753 |          0 |          0 |        753 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wdy\2-9_platforms.json                                 | JSON     |        421 |          0 |          0 |        421 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wf\1-2_platforms.json                                  | JSON     |      1,802 |          0 |          0 |      1,802 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wf\1-3_platforms.json                                  | JSON     |      1,661 |          0 |          0 |      1,661 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wzr\1-1_platforms.json                                 | JSON     |      2,253 |          0 |          0 |      2,253 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wzr\1-2_platforms.json                                 | JSON     |      2,454 |          0 |          0 |      2,454 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\wzr\1-3_platforms.json                                 | JSON     |      2,128 |          0 |          0 |      2,128 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\zjc\1-2_platforms.json                                 | JSON     |      1,759 |          0 |          0 |      1,759 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\zjc\1-3_platforms.json                                 | JSON     |      1,699 |          0 |          0 |      1,699 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\result\zjc\1-4_platforms.json                                 | JSON     |        947 |          0 |          0 |        947 |
+| c:\Users\83549\Documents\github_proj\pVOG_calibration\utils.py                                                      | Python   |         15 |          0 |          7 |         22 |
+| Total                                                                                                               |          |    175,354 |        319 |        587 |    176,260 |
++---------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

@@ -1,0 +1,22 @@
+Calibration Results:
+
+Original Error:
+Mean ± SD: 5.80° ± 3.19°
+Median (IQR): 5.33° (3.24° - 7.80°)
+
+Degree 1 Polynomial:
+Mean ± SD: 2.40° ± 1.82°
+Median (IQR): 1.99° (0.95° - 3.49°)
+
+Degree 2 Polynomial:
+Mean ± SD: 2.40° ± 1.81°
+Median (IQR): 1.95° (0.94° - 3.47°)
+
+Degree 3 Polynomial:
+Mean ± SD: 1.91° ± 1.54°
+Median (IQR): 1.48° (0.69° - 2.87°)
+
+Degree 4 Polynomial:
+Mean ± SD: 1.91° ± 1.53°
+Median (IQR): 1.48° (0.63° - 2.80°)
+

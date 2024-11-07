@@ -1,0 +1,47 @@
+Calibration Results (Train-Test Split):
+
+Training Set:
+==================================================
+Original Error:
+Mean ± SD: 5.85° ± 3.33°
+Median (IQR): 5.25° (3.23° - 7.89°)
+
+Degree 1 Polynomial:
+Mean ± SD: 2.48° ± 1.88°
+Median (IQR): 2.05° (0.99° - 3.60°)
+
+Degree 2 Polynomial:
+Mean ± SD: 2.46° ± 1.87°
+Median (IQR): 2.01° (0.93° - 3.50°)
+
+Degree 3 Polynomial:
+Mean ± SD: 1.97° ± 1.55°
+Median (IQR): 1.60° (0.72° - 3.07°)
+
+Degree 4 Polynomial:
+Mean ± SD: 1.96° ± 1.54°
+Median (IQR): 1.60° (0.66° - 2.94°)
+
+
+Test Set:
+==================================================
+Original Error:
+Mean ± SD: 5.57° ± 2.53°
+Median (IQR): 5.42° (3.36° - 7.63°)
+
+Degree 1 Polynomial:
+Mean ± SD: 2.10° ± 1.49°
+Median (IQR): 1.85° (0.70° - 3.38°)
+
+Degree 2 Polynomial:
+Mean ± SD: 2.18° ± 1.51°
+Median (IQR): 1.82° (0.96° - 3.34°)
+
+Degree 3 Polynomial:
+Mean ± SD: 1.72° ± 1.47°
+Median (IQR): 1.23° (0.49° - 2.48°)
+
+Degree 4 Polynomial:
+Mean ± SD: 1.71° ± 1.48°
+Median (IQR): 1.23° (0.51° - 2.57°)
+
